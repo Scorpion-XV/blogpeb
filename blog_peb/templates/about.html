@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block titre %}About{% endblock %}
+
+{% load static %}
+{% block content %}
+<div class="container my-5">
+  <h1 class="text-center mb-4">A propos</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <p>L’association est actuellement sous la présidence de Mr Ismaila Diouf, diplomé de l’ESP en génie chimie. Il est secondé par Mr Moustapha Fall, étudiant en master Mathématiques à l’UCAD. Mlle Awa Bèye, étudiante à la FASEG de Dakar est la trésorière.<br>
+        Le bureau PEB a aussi une partie opérative constituée des commissions:<br>
+        COP: Commission Pèdagogique ( Resp. Aspirant Mamadou Ngom, EOA-mer)<br>
+        COREX: Commission Relations Extérieures et Communications (Resp. Mr Alassane Pouye, enseignat et étudiant à la faculté de droit UCAD)<br>
+        COR: Commission Organisation (Resp. Mr Ahmadou Diallo)</p>
+    </div>
+    <div class="col-lg-6">
+      <img src="{% static "/img/about.jpg" %}" alt="Photo" class="img-fluid rounded">
+    </div>
+  </div>
+</div>
+{% endblock %}

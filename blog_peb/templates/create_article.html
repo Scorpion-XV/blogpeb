@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block titre %}create_article{% endblock %}
+
+{% block content %}
+  <h1>Création d'article</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      {{ form.titre.label_tag }}
+      {{ form.titre }}
+    </div>
+    <div class="form-group">
+      {{ form.resume.label_tag }}
+      {{ form.resume }}
+    </div>
+    <div class="form-group">
+      {{ form.miniature.label_tag }}
+      {{ form.miniature }}
+    </div>
+    <div class="form-group">
+      {{ form.contenu.label_tag }}
+      {{ form.contenu }}
+    </div>
+    <div class="form-group">
+      {{ form.auteur.label_tag }}
+      {{ form.auteur }}
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+  </form>
+{% endblock %}

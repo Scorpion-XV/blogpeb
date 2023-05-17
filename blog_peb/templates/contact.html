@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% block titre %}Nous_contacter{% endblock %} 
+{% block content %}
+<h1>Nous contacter</h1>
+
+<div class="row mt-6">
+  <div class="col-md-12 ms-auto">
+    <div class="card card-body">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.prenom.label_tag }} {{ form.prenom }}
+        </div>
+        <div class="form-group">{{ form.nom.label_tag }} {{ form.nom }}</div>
+        <div class="form-group">
+          {{ form.email.label_tag }} {{ form.email }}
+        </div>
+        <div class="form-group">
+          {{ form.message.label_tag }} {{ form.message }}
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+    </div>
+</div>
+</div>
+
+<div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Diourbel&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://capcuttemplate.org/">Capcuttemplate.org</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
+
+
+
+{% endblock %}
