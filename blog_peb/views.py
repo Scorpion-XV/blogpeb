@@ -5,7 +5,6 @@ from .models import Contact
 from django.urls import reverse
 from django.core.paginator import Paginator
 from .forms import *
-from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 
 def accueil(request):
@@ -35,7 +34,7 @@ def article_detail(request, id):
 
 
 
-# from django.http import HttpResponse
+
 from .forms import ArticleForm
 @login_required
 def create_article(request):

@@ -1,4 +1,6 @@
 from django.db import models
+from django import forms
+
 
 # Create your models here.
 class Article(models.Model):
@@ -16,3 +18,5 @@ class Contact(models.Model):
     email = models.CharField(max_length=150, null=True, blank=True)
     message = models.TextField()
     date_creation = models.DateTimeField(auto_now_add=True)
+
+
