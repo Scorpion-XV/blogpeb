@@ -18,7 +18,7 @@ def accueil(request):
     return render(request, 'accueil.html', context)
 
 
-@login_required(login_url="/login/")
+@login_required
 def blog(request):
     articles_list = Article.objects.all().order_by('date_creation')
     paginator = Paginator(articles_list, 5) # 5 articles par page
@@ -27,7 +27,7 @@ def blog(request):
     return render(request, 'blog.html', {'articles': articles})
 
 
-@login_required(login_url="/login/")
+@login_required
 def article_detail(request, id):
     article = get_object_or_404(Article, id=id)
     context = {'article': article}
@@ -37,7 +37,7 @@ def article_detail(request, id):
 
 # from django.http import HttpResponse
 from .forms import ArticleForm
-@login_required(login_url="/login/")
+@login_required
 def create_article(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
@@ -48,7 +48,7 @@ def create_article(request):
         form = ArticleForm()
     return render(request, 'create_article.html', {'form': form})
 
-@login_required(login_url="/login/")
+@login_required
 def edit_article(request, id):
     article = get_object_or_404(Article, id=id)
     if request.method == 'POST':
@@ -64,27 +64,8 @@ def edit_article(request, id):
 def about(request):
     return render(request, "about.html")
 
-# @login_required(login_url="/login/")
-# def contact(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         email = request.POST.get('email')
-#         message = request.POST.get('message')
 
-#         # Envoi du message par email
-#         send_mail(
-#             f"Message de {name} ({email})",
-#             message,
-#             email,
-#             ['ndourmouhammad15@gmail.com'], # Remplacez par votre propre adresse email
-#             fail_silently=False,
-#         )
-
-#         return render(request, 'contact.html', {'success': True})
-
-#     return render(request, 'contact.html')
-
-@login_required(login_url="/login/")
+@login_required
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST, request.FILES)
