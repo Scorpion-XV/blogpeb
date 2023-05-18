@@ -51,14 +51,39 @@ def create_article(request):
 @login_required
 def edit_article(request, id):
     article = get_object_or_404(Article, id=id)
+    
     if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/articles')
+        titre = request.POST.get('titre')
+        resume = request.POST.get('resume')
+        miniature = request.FILES.get('miniature')
+        contenu = request.POST.get('contenu')
+        auteur = request.POST.get('auteur')
+
+        if miniature is not None:
+            # Handle the uploaded file
+            # Save the file to a specific location or perform any processing
+            # For example:
+            file_path = f"media/{miniature.name}"
+            with open(file_path, 'wb') as file:
+                for chunk in miniature.chunks():
+                    file.write(chunk)
+
+        # Update the article fields
+        article.titre = titre
+        article.resume = resume
+        article.contenu = contenu
+        article.auteur = auteur
+        article.save()
+
+        return redirect('/articles')
     else:
-        form = ArticleForm(instance=article)
-    return render(request, 'edit_article.html', {'form': form})
+        # Populate the form with existing data
+        titre = article.titre
+        resume = article.resume
+        contenu = article.contenu
+        auteur = article.auteur
+
+    return render(request, 'edit_article.html', {'article': article})
 
 
 def about(request):

@@ -12,7 +12,13 @@
     <div class="col-md-4">
       <div class="card mb-4">
         <div class="card-body">
-            <img src="{{ article.miniature.url }}" class="img-fluid mb-4" alt="{{ article.titre }}">
+            {% comment %} <img src="{{ article.miniature.url }}" class="img-fluid mb-4" alt="{{ article.titre }}"> {% endcomment %}
+            {% if article.miniature %}
+              <img src="{{ article.miniature.url }}" class="img-fluid mb-4" alt="{{ article.titre }}">
+            {% else %}
+              <p>No miniature available</p>
+            {% endif %}
+
         </div>
       </div>
     </div>
