@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from .forms import ArticleForm
 
 def accueil(request):
     # Récupérer les 4 derniers articles du blog
@@ -17,7 +18,7 @@ def accueil(request):
     return render(request, 'accueil.html', context)
 
 
-@login_required
+
 def blog(request):
     articles_list = Article.objects.all().order_by('date_creation')
     paginator = Paginator(articles_list, 5) # 5 articles par page
@@ -26,7 +27,7 @@ def blog(request):
     return render(request, 'blog.html', {'articles': articles})
 
 
-@login_required
+
 def article_detail(request, id):
     article = get_object_or_404(Article, id=id)
     context = {'article': article}
@@ -35,7 +36,7 @@ def article_detail(request, id):
 
 
 
-from .forms import ArticleForm
+
 @login_required
 def create_article(request):
     if request.method == 'POST':
